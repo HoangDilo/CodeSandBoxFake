@@ -1,0 +1,29 @@
+.custom-sp-wrapper {
+    background: black;
+}
+
+.custom-sp-layout {
+    height: 100vh;
+    background: black;
+    border: none !important;
+    border-radius: 0px !important;
+}
+
+.custom-sp-stack {
+    height: 100% !important;
+}
+
+.custom-file-explorer {
+    height: 100% !important;
+}
+
+.buttons {
+    background: #252525;
+    padding: 0px 12px;
+    border-radius: 999px;
+    color: #999999;
+
+    &:hover {
+        color: #c5c5c5;
+    }
+}
