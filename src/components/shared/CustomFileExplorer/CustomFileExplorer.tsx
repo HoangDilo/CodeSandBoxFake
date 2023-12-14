@@ -14,7 +14,7 @@ import '@/styles/shared/CustomFileExplorer/CustomFileExplorer.scss';
 export default function CustomFileExplorer() {
 
   const { sandpack } = useSandpack();
-  const { files, openFile, closeFile, addFile, activeFile, setActiveFile } = sandpack;
+  const { files, visibleFiles, addFile, activeFile, setActiveFile } = sandpack;
 
   const [isAdding, setIsAdding] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -44,12 +44,13 @@ export default function CustomFileExplorer() {
   }, [])
 
   useEffect(() => {
-    console.log(filePath);
-    
-    addFile(filePath)
+    addFile(filePath, '', true)
+    visibleFiles.push(filePath)
   }, [filePath])
 
   useEffect(() => {
+    console.log(sandpack);
+    
     setActiveFile(filePath)
   }, [files])
 
