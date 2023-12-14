@@ -17,12 +17,13 @@ export default function CustomFileExplorer() {
   const { files, visibleFiles, addFile, activeFile, setActiveFile } = sandpack;
 
   const [isAdding, setIsAdding] = useState(false);
+  const [addingTYpe, addingType] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [filePath, setFilePath] = useState('');
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleAddNewFile = () => {
+  const handleAddNew = () => {
     setIsAdding(true);
   }
 
@@ -65,10 +66,10 @@ export default function CustomFileExplorer() {
       <div className="file-explorer-header">
         <p className="file-explorer-title">File Explorer</p>
         <div className="file-explorer-buttons">
-          <button className="file-explorer-button" onClick={handleAddNewFile}>
+          <button className="file-explorer-button" onClick={handleAddNew}>
             <IcNewFile />
           </button>
-          <button className="file-explorer-button" onClick={handleAddNewFile}>
+          <button className="file-explorer-button" onClick={handleAddNew}>
             <IcNewFolder />
           </button>
         </div>
