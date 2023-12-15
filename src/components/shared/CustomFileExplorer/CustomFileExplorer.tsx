@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-import { useSandpack } from "@codesandbox/sandpack-react"
+import { useActiveCode, useSandpack } from "@codesandbox/sandpack-react"
 
 import { convertObjectToArray } from "@/utils/convertObjectToArray";
 import { findDirectory } from "@/utils/findDirectory";
@@ -15,7 +15,7 @@ import IcTrashCan from "@/components/icons/IcTrashCan";
 export default function CustomFileExplorer() {
 
   const { sandpack } = useSandpack();
-  const { files, visibleFiles, addFile, activeFile, setActiveFile, deleteFile } = sandpack;
+  const { files, visibleFiles, addFile, activeFile, setActiveFile, deleteFile, autoReload } = sandpack;
 
   const [isAdding, setIsAdding] = useState(false);
   const [addingType, setAddingType] = useState('');
@@ -58,9 +58,7 @@ export default function CustomFileExplorer() {
     convertObjectToArray(files);
   }, [])
 
-  useEffect(() => {
-    console.log(filePath);
-    
+  useEffect(() => {    
     if (filePath) {
       addFile(filePath, '', true)
       visibleFiles.push(filePath)
