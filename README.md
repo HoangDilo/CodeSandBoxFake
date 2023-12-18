@@ -1,4 +1,5 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Update 18/12/2023: add API merge
 ## Update 14/12/2023: add file and delete file
 ## Update 13/12/2023: add description for layout testing + trying to add file and folder
 
