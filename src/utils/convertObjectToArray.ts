@@ -5,7 +5,6 @@ interface SandpackBundlerFiles {
     },
 }
 
-
 export const convertObjectToArray = (object : SandpackBundlerFiles) => {
     const arr : {
         key: string,

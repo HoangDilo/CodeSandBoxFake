@@ -1,21 +1,25 @@
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
+import { useSandpack } from "@codesandbox/sandpack-react"
 
-import { useActiveCode, useSandpack } from "@codesandbox/sandpack-react"
-
-import { convertObjectToArray } from "@/utils/convertObjectToArray";
 import { findDirectory } from "@/utils/findDirectory";
+import { getAllChallenges } from "@/api/getChallenge";
 
 import { SandpackFileExplorer } from "@codesandbox/sandpack-react";
 import IcNewFile from "../../icons/IcNewFile";
 import IcNewFolder from "../../icons/IcNewFolder";
+import IcTrashCan from "@/components/icons/IcTrashCan";
+import { ChallengeData } from "@/components/pages/SandPackWidget/SandPackWidget";
+
+import { Challenge } from "@/interfaces/Challenge";
 
 import '@/styles/shared/CustomFileExplorer/CustomFileExplorer.scss';
-import IcTrashCan from "@/components/icons/IcTrashCan";
 
 export default function CustomFileExplorer() {
 
   const { sandpack } = useSandpack();
   const { files, visibleFiles, addFile, activeFile, setActiveFile, deleteFile, autoReload } = sandpack;
+
+  const { challenge, isShowSolution } = useContext(ChallengeData)
 
   const [isAdding, setIsAdding] = useState(false);
   const [addingType, setAddingType] = useState('');
@@ -24,7 +28,7 @@ export default function CustomFileExplorer() {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleAddNew = (type : string) => {
+  const handleAddNew = (type: string) => {
     setIsAdding(true);
     if (type === 'file') {
       setAddingType('file');
@@ -55,10 +59,6 @@ export default function CustomFileExplorer() {
   }
 
   useEffect(() => {
-    convertObjectToArray(files);
-  }, [])
-
-  useEffect(() => {    
     if (filePath) {
       addFile(filePath, '', true)
       visibleFiles.push(filePath)
@@ -75,6 +75,15 @@ export default function CustomFileExplorer() {
       inputRef.current.focus();
     }
   }, [isAdding])
+
+  useEffect(() => {
+    if(challenge) {
+      const files = isShowSolution ? JSON.parse(String(challenge?.codeSolution)) : JSON.parse(String(challenge?.codeTemplate));
+      for (const fileKey in files) {
+        addFile(fileKey, files[fileKey], true)
+      }
+    }
+  }, [challenge])
 
   return (
     <div className="file-explorer-plus">

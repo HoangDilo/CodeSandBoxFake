@@ -1,18 +1,16 @@
-import { useState } from "react";
-
-import Post from "./Post/Post";
-import Solution from "./Solution/Solution";
+import { useContext, useEffect, useState } from "react";
 
 import IcDescription from "@/components/icons/IcDescription";
 import IcIdea from "@/components/icons/IcIdea";
 import IcDescriptionDisable from "@/components/icons/IcDescriptionDisable";
 import IcIdeaDisable from "@/components/icons/IcIdeaDisable";
+import { ChallengeData } from "../SandPackWidget/SandPackWidget";
 
 import "@/styles/pages/SandPackWidget/SandPackWidget.scss";
 
 export default function Description() {
 
-    const [isShowSolution, setIsShowSolution] = useState(false);
+    const { challenge, authorInfo, isShowSolution, setIsShowSolution } = useContext(ChallengeData)
 
     return (
         <div className="description-area">
@@ -30,9 +28,36 @@ export default function Description() {
                     <span className={!isShowSolution ? 'disabled-tab' : ''}>Solution</span>
                 </button>
             </div>
-            <div className="desc-post-content-scroller">
-                {!isShowSolution && <Post />}
-                {isShowSolution && <Solution />}
+            <div className="desc-scroller">
+                <div className='desc-container'>
+                    <div className='text-6'>
+                        {String(challenge?.title)}
+                    </div>
+                    <div className='desc-info color-4'>
+                        <div className='author-info-container'>
+                            <img src={String(authorInfo?.avatarUrl)} className='author-avt' />
+                            <div className='author-info'>
+                                <span>{String(authorInfo?.nickname)}</span>
+                                <span>{String(authorInfo?.email)}</span>
+                            </div>
+                        </div>
+                        <div className=''>
+                            <span>Level: </span>
+                            {String(challenge?.level)}
+                        </div>
+                        <div className=''>
+                            <span>Duration: </span>
+                            {String(challenge?.spendTime)}
+                        </div>
+                        <div>
+                            <span>Completed: </span>
+                            {String(challenge?.userCompleted)}
+                        </div>
+                    </div>
+                    <div className='color-2'>
+                        {isShowSolution ? String(challenge?.description) : String(challenge?.solutionDescription)}
+                    </div>
+                </div>
             </div>
         </div>
     );

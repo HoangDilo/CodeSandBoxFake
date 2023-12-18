@@ -1,0 +1,48 @@
+$first: #FFF;
+$second: #e5e5e5;
+$third: #c5c5c5;
+$fourth: #999999;
+
+.text-1 {
+    font-size: 12px;
+}
+
+.text-2 {
+    font-size: 14px;
+}
+
+.text-3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.text-4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.text-5 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.text-6 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.color-1 {
+    color: $first;
+}
+
+.color-2 {
+    color: $second;
+}
+
+.color-3 {
+    color: $third;
+}
+
+.color-4 {
+    color: $fourth
+}

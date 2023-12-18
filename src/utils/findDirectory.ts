@@ -1,5 +1,6 @@
-export const findDirectory = (filePath : string) => {
-    const array = filePath.split('/');
+export const findDirectory = (activeFilePath : string = '/NaN') => {
+    const array = activeFilePath.split('/');
     array.pop();
+    console.log(array.join('/'));
     return array.join('/');
 }

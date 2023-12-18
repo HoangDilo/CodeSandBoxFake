@@ -1,3 +1,5 @@
+@import './src/styles/constants/fonts.scss';
+
 $bg-color: #151515;
 $bg-color-hover-1: #c5c5c5;
 $text-color-1: #c5c5c5;
@@ -11,8 +13,7 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
 
 .output-area {
   display: flex;
-  min-width: 420px;
-  max-width: 420px;
+  width: 100%;
 }
 
 .custom-sp-layout {
@@ -37,9 +38,9 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
 }
 
 #terminal {
-    fill: #999999;
-    width: 13px;
-    height: 13px;
+  fill: #999999;
+  width: 13px;
+  height: 13px;
 }
 
 .buttons {
@@ -51,7 +52,7 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
   align-items: center;
   gap: 6px;
   &:hover {
-    color: $bg-color-hover-1;  
+    color: $bg-color-hover-1;
     #terminal {
       fill: #c5c5c5;
     }
@@ -65,6 +66,7 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
   background: $bg-color;
   flex-direction: column;
   max-width: 480px;
+  min-width: 480px;
 }
 
 .description-header {
@@ -105,7 +107,7 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
   color: $text-color-1;
 }
 
-.desc-post-info {
+.desc-info {
   display: flex;
   column-gap: 24px;
   row-gap: 12px;
@@ -129,18 +131,20 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
   gap: 8px;
 }
 
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .languages {
   display: flex;
   gap: 8px;
 }
 
-.desc-post-content-scroller {
+.desc-scroller {
   display: flex;
   overflow-y: auto;
-}
-
-.desc-post-content {
-  font-size: 14px;
 }
 
 .disabled-tab {
@@ -148,5 +152,16 @@ $bg-color-hover-2: rgba(90, 93, 94, 0.3);
 }
 
 .custom-console {
-    max-height: 50%;
+  max-height: 50%;
+}
+
+.desc-content {
+  font-size: 14px;
+}
+
+.desc-container {
+    padding: 0px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
