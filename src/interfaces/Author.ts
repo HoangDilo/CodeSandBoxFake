@@ -1,11 +1,11 @@
-export const Author = {
-    id: Number,
-    email: String,
-    password: String,
-    nickname: String,
-    avatarUrl: String,
-    last_login: String,
-    theme_ide: String,
-    createdAt: String,
-    updatedAt: String,
+export interface Author {
+    id: number,
+    email: string,
+    password: string,
+    nickname: string,
+    avatarUrl: string,
+    last_login: string,
+    theme_ide: string,
+    createdAt: string,
+    updatedAt: string,
 }

@@ -24,8 +24,8 @@ import { Author } from "@/interfaces/Author";
 import '@/styles/pages/SandPackWidget/SandPackWidget.scss'
 
 interface ChallengProviderValues {
-  challenge: typeof Challenge | undefined,
-  authorInfo: typeof Author | undefined,
+  challenge: Challenge | undefined,
+  authorInfo: Author | undefined,
   isShowSolution: boolean,
   setIsShowSolution: any,
 }
@@ -45,8 +45,8 @@ export default function SandPackWidget() {
   const runBtnRef = useRef<HTMLButtonElement | null>(null)
 
   const [isOpenConsole, setIsOpenConsole] = useState(false);
-  const [challenge, setChallenge] = useState<typeof Challenge>();
-  const [authorInfo, setAuthorInfo] = useState<typeof Author | undefined>();
+  const [challenge, setChallenge] = useState<Challenge>();
+  const [authorInfo, setAuthorInfo] = useState<Author | undefined>();
   const [isShowSolution, setIsShowSolution] = useState(false);
   
   useEffect(() => {
@@ -61,13 +61,13 @@ export default function SandPackWidget() {
   }, [])
 
   useEffect(() => {
-    getAllChallenges().then((data: { data: typeof Challenge[] }) => {
-      setChallenge(data.data.find(challenge => Number(challenge.id) === parseInt(String(challengeId))))
+    getAllChallenges().then((data: { data: Challenge[] }) => {
+      setChallenge(data.data.find(challenge => challenge.id === parseInt(String(challengeId))))
     })
   }, [])
 
   useEffect(() => {
-    getAuthorById(challenge?.authorId).then((data: { data: typeof Author }) => {
+    getAuthorById(challenge?.authorId).then((data: { data: Author }) => {
       setAuthorInfo(data.data)
     })
   }, [challenge])
